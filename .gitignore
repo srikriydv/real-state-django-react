@@ -5,6 +5,8 @@
 staticfiles
 mediafiles
 client/node_modules
+# Ignore Django migrations
+*/migrations/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
