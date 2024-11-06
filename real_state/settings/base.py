@@ -45,7 +45,15 @@ THIRD_PARTY_APPS = [
     "rest_framework_simplejwt",
 ]
 
-LOCAL_APPS = ["apps.common", "apps.users", "apps.profiles", "apps.ratings"]
+
+LOCAL_APPS = [
+    "apps.common",
+    "apps.users",
+    "apps.profiles",
+    "apps.ratings",
+    "apps.properties",
+    "apps.enquiries",
+]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -108,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "Africa/Kigali"
+TIME_ZONE = "Asia/Kathmandu"
 
 USE_I18N = True
 
