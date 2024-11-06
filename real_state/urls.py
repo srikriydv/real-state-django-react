@@ -7,9 +7,10 @@ urlpatterns = [
     path("supersecret/", admin.site.urls),
     path("api/v1/auth/", include("djoser.urls")),
     path("api/v1/auth/", include("djoser.urls.jwt")),
+    path("api/v1/profile/", include("apps.profiles.urls")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
-admin.site.site_header = "Real Estate Admin"
-admin.site.site_title = "Real Estate Admin Portal"
-admin.site.index_title = "Welcome to the Real Estate Portal"
+admin.site.site_header = "Real State Admin"
+admin.site.site_title = "Real State Admin Portal"
+admin.site.index_title = "Welcome to the Real State Portal"
