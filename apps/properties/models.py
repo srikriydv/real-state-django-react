@@ -36,14 +36,13 @@ class Property(TimeStampedUUIDModel):
         COMMERCIAL = "Commercial", _("Commercial")
         OTHER = "Other", _("Other")
 
-    user = (
-        models.ForeignKey(
-            User,
-            verbose_name=_("Agent,Seller or Buyer"),
-            related_name="agent_buyer",
-            on_delete=models.DO_NOTHING,
-        ),
+    user = models.ForeignKey(
+        User,
+        verbose_name=_("Agent,Seller or Buyer"),
+        related_name="agent_buyer",
+        on_delete=models.DO_NOTHING,
     )
+
     title = models.CharField(verbose_name=_("Property Title"), max_length=250)
     slug = AutoSlugField(populate_from="title", unique=True, always_update=True)
     ref_code = models.CharField(
@@ -58,15 +57,15 @@ class Property(TimeStampedUUIDModel):
     )
     country = CountryField(
         verbose_name=_("Country"),
-        default="NP",
+        default="KE",
         blank_label="(select country)",
     )
-    city = models.CharField(verbose_name=_("City"), max_length=180, default="Kathmandu")
+    city = models.CharField(verbose_name=_("City"), max_length=180, default="Nairobi")
     postal_code = models.CharField(
-        verbose_name=_("Postal Code"), max_length=100, default="45600"
+        verbose_name=_("Postal Code"), max_length=100, default="140"
     )
     street_address = models.CharField(
-        verbose_name=_("Street Address"), max_length=150, default="Naya Thimi"
+        verbose_name=_("Street Address"), max_length=150, default="KG8 Avenue"
     )
     property_number = models.IntegerField(
         verbose_name=_("Property Number"),
@@ -145,7 +144,7 @@ class Property(TimeStampedUUIDModel):
 
     def save(self, *args, **kwargs):
         self.title = str.title(self.title)
-        self.description = str.description(self.description)
+        self.description = str.capitalize(self.description)
         self.ref_code = "".join(
             random.choices(string.ascii_uppercase + string.digits, k=10)
         )
