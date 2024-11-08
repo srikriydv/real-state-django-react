@@ -9,6 +9,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NotFound from "./components/NotFound";
 import PropertiesPage from "./pages/PropertiesPage";
+import EnquiryPage from "./pages/Enquiry";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
 							element={<PropertiesPage />}
 						/>
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/enquiry" element={<EnquiryPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <ToastContainer theme="dark" />

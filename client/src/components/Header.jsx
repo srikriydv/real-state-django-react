@@ -12,7 +12,7 @@ const Header = () => {
 	const dispatch = useDispatch();
 
 	const { user } = useSelector((state) => state.auth);
-	console.log(user)
+	// console.log(user)
 
 	const logoutHandler = () => {
 		dispatch(logout());
@@ -45,6 +45,9 @@ const Header = () => {
 							</LinkContainer>
 							<LinkContainer to="/properties">
 								<Nav.Link>Properties</Nav.Link>
+							</LinkContainer>
+							<LinkContainer to="/enquiry">
+								<Nav.Link>Enquiry</Nav.Link>
 							</LinkContainer>
 
 							{user ? (
