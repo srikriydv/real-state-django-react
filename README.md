@@ -1,2 +1,2 @@
 # django-real-estate
-A simple app in react, redux, ngnix and more
+A simple app in react, redux, django

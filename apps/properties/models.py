@@ -41,6 +41,7 @@ class Property(TimeStampedUUIDModel):
         verbose_name=_("Agent,Seller or Buyer"),
         related_name="agent_buyer",
         on_delete=models.DO_NOTHING,
+        null=True
     )
 
     title = models.CharField(verbose_name=_("Property Title"), max_length=250)
