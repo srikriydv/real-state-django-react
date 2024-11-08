@@ -3,10 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from "./pages/HomePage";
+import Header from "./components/Header";
 
 function App() {
   return (
     <>
+    <Header />
       <main className="py-3">
         <Routes>
           <Route path="/" element={<HomePage />} />
