@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import NotFound from "./components/NotFound";
+import PropertiesPage from "./pages/PropertiesPage";
 
 function App() {
   return (
@@ -17,6 +18,10 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route
+							path="/properties"
+							element={<PropertiesPage />}
+						/>
           <Route path="/register" element={<RegisterPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
