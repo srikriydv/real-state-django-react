@@ -12,6 +12,7 @@ const Header = () => {
 	const dispatch = useDispatch();
 
 	const { user } = useSelector((state) => state.auth);
+	console.log(user)
 
 	const logoutHandler = () => {
 		dispatch(logout());
@@ -49,8 +50,8 @@ const Header = () => {
 							{user ? (
 								<NavDropdown
 									title={
-										user.firstName
-											? user.firstName
+										user.first_name
+											? user.first_name
 											: "Welcome"
 									}
 									id="username"
