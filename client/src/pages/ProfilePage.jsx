@@ -11,7 +11,7 @@ const ProfilePage = () => {
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   );
-  const { profile} = useSelector(
+  const { profile } = useSelector(
     (state) => state.profile
   );
 
@@ -41,8 +41,6 @@ const ProfilePage = () => {
   }, [dispatch, isError, isSuccess, message]);
 
   useEffect(() => {
-    // Log the profile data whenever the `user` state changes
-    // console.log('Updated User Profile:', user);
     if (user) {
       setProfileData({
         about_me: user.about_me || '',
@@ -52,7 +50,7 @@ const ProfilePage = () => {
         license: user.license || '',
       });
     }
-  }, [user]); // Re-run this when `user` changes
+  }, [user]);
 
   if (isLoading) {
     return <Spinner />;
@@ -65,12 +63,8 @@ const ProfilePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(user.username, profileData);
-  
-    // Dispatch updateProfile and then fetch the updated profile
     dispatch(updateProfile({ username: user.username, profileData }))
       .then(() => {
-        // After the profile is updated, re-fetch the profile to get the updated state
         dispatch(authenticate());
         setIsEditing(false);
       })
@@ -81,88 +75,94 @@ const ProfilePage = () => {
 
   return (
     <div className="container mt-4">
-      <h1 className="text-center mb-4">Profile</h1>
+      <h1 className="text-center mb-4 text-primary">Profile</h1>
       {user ? (
-        <div className="card profile-card p-4">
-          <div className="profile-header d-flex align-items-center mb-3">
+        <div className="card shadow-lg p-4 rounded-lg">
+          <div className="profile-header d-flex align-items-center mb-4">
             <img
               src={user.profile_photo || "/profile_default.png"}
               alt="Profile"
               className="rounded-circle profile-photo me-3"
-              style={{ width: "100px", height: "100px", objectFit: "cover" }}
+              style={{
+                width: "100px",
+                height: "100px",
+                objectFit: "cover",
+                border: "2px solid #ddd",
+                padding: "2px",
+              }}
             />
-            <h3>{user.username}</h3>
+            <h3 className="text-dark">{user.username}</h3>
           </div>
 
           {isEditing ? (
             <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="about_me">About Me</label>
+              <div className="form-group mb-3">
+                <label htmlFor="about_me" className="text-muted">About Me</label>
                 <textarea
                   id="about_me"
                   name="about_me"
                   value={profileData.about_me}
                   onChange={handleInputChange}
-                  className="form-control"
+                  className="form-control rounded-pill"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="phone_number">Phone Number</label>
+              <div className="form-group mb-3">
+                <label htmlFor="phone_number" className="text-muted">Phone Number</label>
                 <input
                   type="text"
                   id="phone_number"
                   name="phone_number"
                   value={profileData.phone_number}
                   onChange={handleInputChange}
-                  className="form-control"
+                  className="form-control rounded-pill"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="city">City</label>
+              <div className="form-group mb-3">
+                <label htmlFor="city" className="text-muted">City</label>
                 <input
                   type="text"
                   id="city"
                   name="city"
                   value={profileData.city}
                   onChange={handleInputChange}
-                  className="form-control"
+                  className="form-control rounded-pill"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="country">Country</label>
+              <div className="form-group mb-3">
+                <label htmlFor="country" className="text-muted">Country</label>
                 <input
                   type="text"
                   id="country"
                   name="country"
                   value={profileData.country}
                   onChange={handleInputChange}
-                  className="form-control"
+                  className="form-control rounded-pill"
                 />
               </div>
-              <div className="form-group">
-                <label htmlFor="license">License</label>
+              <div className="form-group mb-3">
+                <label htmlFor="license" className="text-muted">License</label>
                 <input
                   type="text"
                   id="license"
                   name="license"
                   value={profileData.license}
                   onChange={handleInputChange}
-                  className="form-control"
+                  className="form-control rounded-pill"
                 />
               </div>
-              <button type="submit" className="btn btn-primary mt-3">
+              <button type="submit" className="btn btn-success mt-3 rounded-pill">
                 Save Changes
               </button>
               <button
                 type="button"
                 onClick={() => setIsEditing(false)}
-                className="btn btn-secondary mt-3 ms-2"
+                className="btn btn-danger mt-3 ms-2 rounded-pill"
               >
                 Cancel
               </button>
             </form>
           ) : (
-            <div className="profile-details">
+            <div className="profile-details mt-4">
               <p><strong>About Me:</strong> {user.about_me}</p>
               <p><strong>Phone Number:</strong> {user.phone_number}</p>
               <p><strong>City:</strong> {user.city}</p>
@@ -177,7 +177,7 @@ const ProfilePage = () => {
               <p><strong>Number of Reviews:</strong> {user.num_reviews || 0}</p>
               <button
                 onClick={() => setIsEditing(true)}
-                className="btn btn-primary mt-3"
+                className="btn btn-primary mt-3 rounded-pill"
               >
                 Edit Profile
               </button>

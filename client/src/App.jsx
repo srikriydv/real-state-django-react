@@ -11,13 +11,14 @@ import NotFound from "./components/NotFound";
 import PropertiesPage from "./pages/PropertiesPage";
 import EnquiryPage from "./pages/Enquiry";
 import ProfilePage from "./pages/ProfilePage";
+import PropertyDetail from "./components/PropertyDetail";
 // import ProfileUpdatePage from "./pages/ProfileUpdatePage";
 
 function App() {
   return (
     <>
       <Header />
-      <main style={{ paddingTop: "56px" }}>
+      <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
@@ -28,6 +29,7 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/enquiry" element={<EnquiryPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/property/:slug" element={<PropertyDetail />} />
           {/* <Route path="/profile/update/:username" element={<ProfileUpdatePage />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
