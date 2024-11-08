@@ -47,12 +47,11 @@ class GetProfileAPIView(APIView):
 class UpdateProfileAPIView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     renderer_classes = [ProfileJSONRenderer]
-
     serializer_class = UpdateProfileSerializer
 
     def patch(self, request, username):
         try:
-            Profile.objects.get(user__username=username)
+            profile = Profile.objects.get(user__username=username)
         except Profile.DoesNotExist:
             raise ProfileNotFound
 
@@ -62,9 +61,12 @@ class UpdateProfileAPIView(APIView):
 
         data = request.data
         serializer = UpdateProfileSerializer(
-            instance=request.user.profile, data=data, partial=True
+            instance=profile, data=data, partial=True
         )
 
-        serializer.is_valid()
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            # Return errors if the data is invalid
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
