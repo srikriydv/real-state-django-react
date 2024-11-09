@@ -28,10 +28,10 @@ const PropertiesPage = () => {
 	return (
 		<>
 			<Title title="Our Properties Catalog" />
-			<Container className="py-5">
+			<Container className="py-5 mt-5">
 				<Row className="text-center mb-4">
 					<Col>
-						<h1 className="display-4 fw-bold text-primary">Our Property Catalog</h1>
+						<h1 className="display-4 fw-bold text-success">Our Property Catalog</h1>
 						<p className="text-muted">Discover a variety of properties to suit your needs.</p>
 						<hr className="mx-auto" style={{ width: "60px", height: "3px", backgroundColor: "#0d6efd" }} />
 					</Col>

@@ -74,8 +74,9 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="container mt-4">
-      <h1 className="text-center mb-4 text-primary">Profile</h1>
+    <div className="container mt-5">
+      <hr />
+      <h1 className="text-center mb-4 text-success mt-5">Profile</h1>
       {user ? (
         <div className="card shadow-lg p-4 rounded-lg">
           <div className="profile-header d-flex align-items-center mb-4">
@@ -177,7 +178,7 @@ const ProfilePage = () => {
               <p><strong>Number of Reviews:</strong> {user.num_reviews || 0}</p>
               <button
                 onClick={() => setIsEditing(true)}
-                className="btn btn-primary mt-3 rounded-pill"
+                className="btn btn-success mt-3 rounded-pill"
               >
                 Edit Profile
               </button>

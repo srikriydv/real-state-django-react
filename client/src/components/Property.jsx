@@ -1,6 +1,6 @@
 import React from "react";
 import { Badge, Button, Card, Col, Row } from "react-bootstrap";
-import { FaBed, FaShower } from "react-icons/fa";
+import { FaBed, FaEye } from "react-icons/fa";
 import { GiStairs } from "react-icons/gi";
 import { Link } from "react-router-dom";
 
@@ -20,10 +20,10 @@ const Property = ({ property }) => {
 			<Link to={`/property/${property.slug}`}>
 				<Card.Img src={property.cover_photo} variant="top" />
 			</Link>
-			<Card.Title className="property-price">
+			<Card.Title className="property-price text-warning">
 				${numberWithCommas(Number(property.price))}
 			</Card.Title>
-			<Card.Body>
+			<Card.Body className="bg-success">
 				<Card.Title as="h4">
 					<strong>{property.title}</strong>
 				</Card.Title>
@@ -35,19 +35,19 @@ const Property = ({ property }) => {
 				<Row>
 					<Col className="d-flex justify-content-between">
 						<span>
-							<FaBed /> {property.bedrooms}
+							<FaBed /> Bedroom: {property.bedrooms}
 						</span>
 						<span>
-							<FaShower /> {property.bathrooms}
+							<GiStairs /> Floor: {property.total_floors}
 						</span>
 						<span>
-							<GiStairs /> {property.total_floors}
+							<FaEye /> Views: {property.views}
 						</span>
 					</Col>
 				</Row>
 				<hr />
 				<Link to={`/property/${property.slug}`}>
-					<Button variant="primary">Get More Info &gt; &gt;</Button>
+					<Button variant="warning">Get More Info &gt; &gt;</Button>
 				</Link>
 			</Card.Body>
 		</Card>
